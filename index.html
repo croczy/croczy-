@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Setup Gaming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">MyGamingSetup</div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Accueil</a></li>
+                    <li><a href="#">Périphériques</a></li>
+                    <li><a href="#">Mobilier</a></li>
+                    <li><a href="#">Accessoires</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1>Mon Setup Gaming Personnel</h1>
+            <p>Bienvenue sur mon site présentant tout mon équipement gaming ! Vous trouverez ici tous les détails sur mon clavier, ma souris, mon écran, ma chaise et bien plus encore.</p>
+        </section>
+        
+        <div class="modes">
+            <button class="mode-btn active" data-mode="all">Tout</button>
+            <button class="mode-btn" data-mode="peripherals">Périphériques</button>
+            <button class="mode-btn" data-mode="furniture">Mobilier</button>
+            <button class="mode-btn" data-mode="accessories">Accessoires</button>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3>12</h3>
+                <p>Périphériques</p>
+            </div>
+            <div class="stat-card">
+                <h3>3</h3>
+                <p>Pièces de mobilier</p>
+            </div>
+            <div class="stat-card">
+                <h3>8</h3>
+                <p>Accessoires</p>
+            </div>
+        </div>
+        
+        <div class="setup-grid">
+            <!-- Keyboard -->
+            <div class="setup-item" data-category="peripherals">
+                <div class="image-container">
+                    <img src="/api/placeholder/300/180" alt="Clavier gaming">
+                </div>
+                <h3>Clavier Gaming</h3>
+                <p>Clavier mécanique RGB avec switchs Cherry MX Brown</p>
+                <ul class="specs">
+                    <li>Switchs Cherry MX Brown</li>
+                    <li>RGB customisable</li>
+                    <li>Disposition AZERTY</li>
+                    <li>Touches macro programmables</li>
+                </ul>
+                <div class="price">Prix: 129,99 €</div>
+                <div class="rating">★★★★★</div>
+            </div>
+            
+            <!-- Mouse -->
+            <div class="setup-item" data-category="peripherals">
+                <div class="image-container">
+                    <img src="/api/placeholder/300/180" alt="Souris gaming">
+                </div>
+                <h3>Souris Gaming</h3>
+                <p>Souris optique ultra-légère avec capteur haute précision</p>
+                <ul class="specs">
+                    <li>16 000 DPI</li>
+                    <li>Poids: 67g</li>
+                    <li>RGB synchronisable</li>
+                    <li>7 boutons programmables</li>
+                </ul>
+                <div class="price">Prix: 89,99 €</div>
+                <div class="rating">★★★★☆</div>
+            </div>
+            
+            <!-- Chair -->
+            <div class="setup-item" data-category="furniture">
+                <div class="image-container">
+                    <img src="/api/placeholder/300/180" alt="Chaise gaming">
+                </div>
+                <h3>Chaise Gaming</h3>
+                <p>Chaise ergonomique avec support lombaire réglable</p>
+                <ul class="specs">
+                    <li>Revêtement en cuir PU</li>
+                    <li>Accoudoirs 4D</li>
+                    <li>Inclinaison jusqu'à 165°</li>
+                    <li>Coussin lombaire et cervical</li>
+                </ul>
+                <div class="price">Prix: 249,99 €</div>
+                <div class="rating">★★★★★</div>
+            </div>
+            
+            <!-- Monitor -->
+            <div class="setup-item" data-category="peripherals">
+                <div class="image-container">
+                    <img src="/api/placeholder/300/180" alt="Écran gaming">
+                </div>
+                <h3>Écran Gaming</h3>
+                <p>Écran 27" incurvé avec taux de rafraîchissement élevé</p>
+                <ul class="specs">
+                    <li>Résolution 2560x1440 (QHD)</li>
+                    <li>Taux de rafraîchissement: 165Hz</li>
+                    <li>Temps de réponse: 1ms</li>
+                    <li>Compatible G-Sync/FreeSync</li>
+                </ul>
+                <div class="price">Prix: 379,99 €</div>
+                <div class="rating">★★★★★</div>
+            </div>
+            
+            <!-- Headset -->
+            <div class="setup-item" data-category="peripherals">
+                <div class="image-container">
+                    <img src="/api/placeholder/300/180" alt="Casque gaming">
+                </div>
+                <h3>Casque Gaming</h3>
+                <p>Casque sans fil avec son surround 7.1</p>
+                <ul class="specs">
+                    <li>Son surround 7.1</li>
+                    <li>Autonomie: 20h</li>
+                    <li>Microphone détachable</li>
+                    <li>Commandes intégrées</li>
+                </ul>
+                <div class="price">Prix: 149,99 €</div>
+                <div class="rating">★★★★☆</div>
+            </div>
+            
+            <!-- Mousepad -->
+            <div class="setup-item" data-category="accessories">
+                <div class="image-container">
+                    <img src="/api/placeholder/300/180" alt="Tapis de souris">
+                </div>
+                <h3>Tapis de Souris</h3>
+                <p>Tapis de souris XXL avec éclairage RGB</p>
+                <ul class="specs">
+                    <li>Dimensions: 90x40cm</li>
+                    <li>RGB avec 16.8M couleurs</li>
+                    <li>Surface en tissu</li>
+                    <li>Base antidérapante</li>
+                </ul>
+                <div class="price">Prix: 39,99 €</div>
+                <div class="rating">★★★★★</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="theme-toggle">
+        <span>☀️</span>
+    </div>
+    
+    <div class="setup-modal">
+        <div class="modal-content">
+            <button class="close-modal">✕</button>
+            <h2>Détails du produit</h2>
+            <div class="modal-grid">
+                <div class="modal-image">
+                    <img src="/api/placeholder/400/300" alt="Product image">
+                </div>
+                <div class="modal-details">
+                    <h3>Nom du produit</h3>
+                    <p class="modal-description">Description détaillée du produit...</p>
+                    <div class="modal-specs">
+                        <h4>Spécifications</h4>
+                        <ul id="modal-specs-list">
+                            <!-- Specs will be filled dynamically -->
+                        </ul>
+                    </div>
+                    <div class="modal-price">Prix: <span id="modal-price">0.00 €</span></div>
+                    <div class="modal-rating">Note: <span id="modal-rating">★★★★☆</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 MyGamingSetup | Tous droits réservés</p>
+    </footer>
+    
+    <script>
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate items on load
+            const setupItems = document.querySelectorAll('.setup-item');
+            setupItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // Mode buttons functionality
+            const modeButtons = document.querySelectorAll('.mode-btn');
+            modeButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    modeButtons.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const mode = this.getAttribute('data-mode');
+                    filterItems(mode);
+                });
+            });
+            
+            // Filter items based on mode
+            function filterItems(mode) {
+                const items = document.querySelectorAll('.setup-item');
+                items.forEach(item => {
+                    if (mode === 'all' || item.getAttribute('data-category') === mode) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Theme toggle
+            const themeToggle = document.querySelector('.theme-toggle');
+            let isDarkMode = true;
+            
+            themeToggle.addEventListener('click', function() {
+                if (isDarkMode) {
+                    document.body.classList.add('light-mode');
+                    this.innerHTML = '<span>🌙</span>';
+                } else {
+                    document.body.classList.remove('light-mode');
+                    this.innerHTML = '<span>☀️</span>';
+                }
+                isDarkMode = !isDarkMode;
+            });
+            
+            // Modal functionality
+            const modal = document.querySelector('.setup-modal');
+            const closeModal = document.querySelector('.close-modal');
+            
+            setupItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Get data from clicked item
+                    const title = this.querySelector('h3').textContent;
+                    const description = this.querySelector('p').textContent;
+                    const image = this.querySelector('img').src;
+                    const price = this.querySelector('.price').textContent;
+                    const rating = this.querySelector('.rating').textContent;
+                    const specs = this.querySelectorAll('.specs li');
+                    
+                    // Fill modal with data
+                    document.querySelector('.modal-details h3').textContent = title;
+                    document.querySelector('.modal-description').textContent = description;
+                    document.querySelector('.modal-image img').src = image;
+                    document.querySelector('#modal-price').textContent = price.replace('Prix: ', '');
+                    document.querySelector('#modal-rating').textContent = rating;
+                    
+                    // Fill specs
+                    const specsList = document.querySelector('#modal-specs-list');
+                    specsList.innerHTML = '';
+                    specs.forEach(spec => {
+                        const li = document.createElement('li');
+                        li.textContent = spec.textContent;
+                        specsList.appendChild(li);
+                    });
+                    
+                    // Show modal
+                    modal.classList.add('active');
+                });
+            });
+            
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+            
+            // Add glow effect to newest item
+            const newestItem = document.querySelector('.setup-item');
+            if (newestItem) {
+                newestItem.classList.add('glow-effect');
+            }
+        });
+    </script>
+</body>
+</html>
