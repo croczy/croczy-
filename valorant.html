@@ -446,7 +446,7 @@
 
     <script>
         // Configuration
-        const PLAYER_ID = "dé montmoi #fort"; // Changez cela par votre ID Valorant
+        const PLAYER_ID = "dé montmoi#fort"; // Changez cela par votre ID Valorant
         const REFRESH_INTERVAL = 30 * 60 * 1000; // 30 minutes en millisecondes
         
         // Note: Dans une implémentation réelle, vous auriez besoin d'un backend pour appeler l'API Valorant Tracker
@@ -476,104 +476,7 @@
         const rankImgEl = document.getElementById("rank-img");
         const playerAvatarEl = document.getElementById("player-avatar");
         
-        // Données simulées pour la démonstration
-        const mockData = {
-            player: {
-                name: "dé montmoi",
-                tag: "fort",
-                avatar: "/api/placeholder/80/80"
-            },
-            rank: {
-                current: "Immortel 2",
-                points: "86/100 RR",
-                peak: "Radiant",
-                position: "#4,892 en EU",
-                image: "/api/placeholder/50/50"
-            },
-            stats: {
-                winRate: "54%",
-                kdRatio: "1.25",
-                hsPercentage: "24.8%",
-                acs: "218",
-                matchesPlayed: "326",
-                wins: "176",
-                losses: "150",
-                playtime: "412h"
-            },
-            matches: [
-                {
-                    map: "Ascent",
-                    date: "19 Mars 2025",
-                    score: "13 - 8",
-                    result: "win",
-                    kills: 21,
-                    deaths: 13,
-                    assists: 9,
-                    acs: 276
-                },
-                {
-                    map: "Split",
-                    date: "18 Mars 2025",
-                    score: "10 - 13",
-                    result: "loss",
-                    kills: 16,
-                    deaths: 16,
-                    assists: 4,
-                    acs: 204
-                },
-                {
-                    map: "Lotus",
-                    date: "18 Mars 2025",
-                    score: "13 - 5",
-                    result: "win",
-                    kills: 19,
-                    deaths: 9,
-                    assists: 7,
-                    acs: 295
-                }
-            ],
-            agents: [
-                {
-                    name: "Jett",
-                    image: "/api/placeholder/60/60",
-                    winRate: "58%",
-                    playRate: "42%"
-                },
-                {
-                    name: "Reyna",
-                    image: "/api/placeholder/60/60",
-                    winRate: "53%",
-                    playRate: "25%"
-                },
-                {
-                    name: "Omen",
-                    image: "/api/placeholder/60/60",
-                    winRate: "51%",
-                    playRate: "18%"
-                },
-                {
-                    name: "Chamber",
-                    image: "/api/placeholder/60/60",
-                    winRate: "49%",
-                    playRate: "15%"
-                }
-            ]
-        };
-        
-        // Simuler le chargement des données
-        function fetchPlayerData() {
-            return new Promise((resolve, reject) => {
-                // Simuler un délai réseau
-                setTimeout(() => {
-                    // 90% chance de réussite
-                    if (Math.random() > 0.1) {
-                        resolve(mockData);
-                    } else {
-                        reject(new Error("Échec de récupération des données"));
-                    }
-                }, 1500);
-            });
-        }
+
         
         // Mettre à jour l'interface avec les nouvelles données
         function updateUI(data) {
