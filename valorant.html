@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Stats Valorant - dé montmoi#fort</title>
+    <style>
+        :root {
+            --primary: #fa4454;
+            --secondary: #53212b;
+            --dark: #0f1923;
+            --light: #ece8e1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--secondary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        header img {
+            height: 60px;
+        }
+        
+        .player-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .player-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        .player-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .player-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .player-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--light);
+        }
+        
+        .player-tag {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            font-weight: bold;
+        }
+        
+        .rank-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .rank-img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .last-update {
+            text-align: center;
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        .btn-refresh {
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-refresh:hover {
+            background-color: var(--secondary);
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary);
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading .loading-spinner {
+            display: inline-block;
+        }
+        
+        .error-message {
+            background-color: rgba(255, 0, 0, 0.2);
+            border-left: 4px solid red;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .agent-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .agent-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .agent-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .agent-img {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--secondary);
+        }
+        
+        .agent-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .agent-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .matches-history {
+            margin-top: 30px;
+        }
+        
+        .match-item {
+            display: flex;
+            background-color: rgba(255, 255, 255, 0.05);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .match-result {
+            width: 5px;
+        }
+        
+        .win {
+            background-color: #00ff88;
+        }
+        
+        .loss {
+            background-color: var(--primary);
+        }
+        
+        .match-details {
+            padding: 15px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .match-map {
+            font-weight: bold;
+        }
+        
+        .match-score {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .match-stats {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .match-stat {
+            text-align: center;
+        }
+        
+        .match-stat-value {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .match-stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .player-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .match-details {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .match-stats {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="player-card">
+                <div class="player-avatar">
+                    <img src="/api/placeholder/80/80" alt="Avatar du joueur" id="player-avatar">
+                </div>
+                <div class="player-info">
+                    <div class="player-name">dé montmoi</div>
+                    <div class="player-tag">#fort</div>
+                </div>
+            </div>
+            <button class="btn-refresh" id="refresh-btn">
+                <span class="loading-spinner"></span> Actualiser les données
+            </button>
+        </header>
+        
+        <div class="error-message" id="error-message">
+            Impossible de charger les données. Veuillez réessayer plus tard.
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>Classement</h3>
+                <div class="rank-display">
+                    <div class="rank-img">
+                        <img src="/api/placeholder/50/50" alt="Rang" id="rank-img">
+                    </div>
+                    <div>
+                        <div class="stat-value" id="current-rank">Chargement...</div>
+                        <div class="stat-label" id="rank-points">0 / 100 RR</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Meilleur Rang</span>
+                    <span class="stat-value" id="peak-rank">Chargement...</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Rang Actuel</span>
+                    <span class="stat-value" id="rank-position">Chargement...</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Performances</h3>
+                <div class="stat-item">
+                    <span class="stat-label">Ratio V/D</span>
+                    <span class="stat-value" id="win-rate">0%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">K/D Ratio</span>
+                    <span class="stat-value" id="kd-ratio">0.0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">HS%</span>
+                    <span class="stat-value" id="hs-percentage">0%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">ACS</span>
+                    <span class="stat-value" id="acs">0</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Statistiques Générales</h3>
+                <div class="stat-item">
+                    <span class="stat-label">Parties Jouées</span>
+                    <span class="stat-value" id="matches-played">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Victoires</span>
+                    <span class="stat-value" id="wins">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Défaites</span>
+                    <span class="stat-value" id="losses">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Temps de Jeu</span>
+                    <span class="stat-value" id="playtime">0h</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="matches-history">
+            <h3>Dernières Parties</h3>
+            <div id="matches-container">
+                <!-- Match items will be added here -->
+                <div class="match-item">
+                    <div class="match-result win"></div>
+                    <div class="match-details">
+                        <div>
+                            <div class="match-map">Haven</div>
+                            <div class="match-date">Chargement...</div>
+                        </div>
+                        <div class="match-score">13 - 7</div>
+                        <div class="match-stats">
+                            <div class="match-stat">
+                                <div class="match-stat-value">15</div>
+                                <div class="match-stat-label">K</div>
+                            </div>
+                            <div class="match-stat">
+                                <div class="match-stat-value">10</div>
+                                <div class="match-stat-label">D</div>
+                            </div>
+                            <div class="match-stat">
+                                <div class="match-stat-value">6</div>
+                                <div class="match-stat-label">A</div>
+                            </div>
+                            <div class="match-stat">
+                                <div class="match-stat-value">245</div>
+                                <div class="match-stat-label">ACS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Agents les plus joués</h3>
+            <div class="agent-stats" id="agents-container">
+                <!-- Agent cards will be added here -->
+            </div>
+        </div>
+        
+        <div class="last-update">
+            Dernière mise à jour: <span id="last-update">Jamais</span>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const PLAYER_ID = "dé montmoi#fort"; // Changez cela par votre ID Valorant
+        const REFRESH_INTERVAL = 30 * 60 * 1000; // 30 minutes en millisecondes
+        
+        // Note: Dans une implémentation réelle, vous auriez besoin d'un backend pour appeler l'API Valorant Tracker
+        // car les appels API directs depuis le navigateur sont souvent bloqués par CORS
+        // Voici une simulation pour démontrer le fonctionnement
+
+        // Éléments DOM
+        const refreshBtn = document.getElementById("refresh-btn");
+        const errorMessage = document.getElementById("error-message");
+        const lastUpdateEl = document.getElementById("last-update");
+        const matchesContainer = document.getElementById("matches-container");
+        const agentsContainer = document.getElementById("agents-container");
+        
+        // Stats DOM elements
+        const currentRankEl = document.getElementById("current-rank");
+        const rankPointsEl = document.getElementById("rank-points");
+        const peakRankEl = document.getElementById("peak-rank");
+        const rankPositionEl = document.getElementById("rank-position");
+        const winRateEl = document.getElementById("win-rate");
+        const kdRatioEl = document.getElementById("kd-ratio");
+        const hsPercentageEl = document.getElementById("hs-percentage");
+        const acsEl = document.getElementById("acs");
+        const matchesPlayedEl = document.getElementById("matches-played");
+        const winsEl = document.getElementById("wins");
+        const lossesEl = document.getElementById("losses");
+        const playtimeEl = document.getElementById("playtime");
+        const rankImgEl = document.getElementById("rank-img");
+        const playerAvatarEl = document.getElementById("player-avatar");
+        
+        // Données simulées pour la démonstration
+        const mockData = {
+            player: {
+                name: "dé montmoi",
+                tag: "fort",
+                avatar: "/api/placeholder/80/80"
+            },
+            rank: {
+                current: "Immortel 2",
+                points: "86/100 RR",
+                peak: "Radiant",
+                position: "#4,892 en EU",
+                image: "/api/placeholder/50/50"
+            },
+            stats: {
+                winRate: "54%",
+                kdRatio: "1.25",
+                hsPercentage: "24.8%",
+                acs: "218",
+                matchesPlayed: "326",
+                wins: "176",
+                losses: "150",
+                playtime: "412h"
+            },
+            matches: [
+                {
+                    map: "Ascent",
+                    date: "19 Mars 2025",
+                    score: "13 - 8",
+                    result: "win",
+                    kills: 21,
+                    deaths: 13,
+                    assists: 9,
+                    acs: 276
+                },
+                {
+                    map: "Split",
+                    date: "18 Mars 2025",
+                    score: "10 - 13",
+                    result: "loss",
+                    kills: 16,
+                    deaths: 16,
+                    assists: 4,
+                    acs: 204
+                },
+                {
+                    map: "Lotus",
+                    date: "18 Mars 2025",
+                    score: "13 - 5",
+                    result: "win",
+                    kills: 19,
+                    deaths: 9,
+                    assists: 7,
+                    acs: 295
+                }
+            ],
+            agents: [
+                {
+                    name: "Jett",
+                    image: "/api/placeholder/60/60",
+                    winRate: "58%",
+                    playRate: "42%"
+                },
+                {
+                    name: "Reyna",
+                    image: "/api/placeholder/60/60",
+                    winRate: "53%",
+                    playRate: "25%"
+                },
+                {
+                    name: "Omen",
+                    image: "/api/placeholder/60/60",
+                    winRate: "51%",
+                    playRate: "18%"
+                },
+                {
+                    name: "Chamber",
+                    image: "/api/placeholder/60/60",
+                    winRate: "49%",
+                    playRate: "15%"
+                }
+            ]
+        };
+        
+        // Simuler le chargement des données
+        function fetchPlayerData() {
+            return new Promise((resolve, reject) => {
+                // Simuler un délai réseau
+                setTimeout(() => {
+                    // 90% chance de réussite
+                    if (Math.random() > 0.1) {
+                        resolve(mockData);
+                    } else {
+                        reject(new Error("Échec de récupération des données"));
+                    }
+                }, 1500);
+            });
+        }
+        
+        // Mettre à jour l'interface avec les nouvelles données
+        function updateUI(data) {
+            // Informations du joueur
+            document.querySelector(".player-name").textContent = data.player.name;
+            document.querySelector(".player-tag").textContent = "#" + data.player.tag;
+            playerAvatarEl.src = data.player.avatar;
+            
+            // Rang
+            currentRankEl.textContent = data.rank.current;
+            rankPointsEl.textContent = data.rank.points;
+            peakRankEl.textContent = data.rank.peak;
+            rankPositionEl.textContent = data.rank.position;
+            rankImgEl.src = data.rank.image;
+            
+            // Statistiques générales
+            winRateEl.textContent = data.stats.winRate;
+            kdRatioEl.textContent = data.stats.kdRatio;
+            hsPercentageEl.textContent = data.stats.hsPercentage;
+            acsEl.textContent = data.stats.acs;
+            matchesPlayedEl.textContent = data.stats.matchesPlayed;
+            winsEl.textContent = data.stats.wins;
+            lossesEl.textContent = data.stats.losses;
+            playtimeEl.textContent = data.stats.playtime;
+            
+            // Historique des parties
+            matchesContainer.innerHTML = "";
+            data.matches.forEach(match => {
+                matchesContainer.innerHTML += `
+                    <div class="match-item">
+                        <div class="match-result ${match.result}"></div>
+                        <div class="match-details">
+                            <div>
+                                <div class="match-map">${match.map}</div>
+                                <div class="match-date">${match.date}</div>
+                            </div>
+                            <div class="match-score">${match.score}</div>
+                            <div class="match-stats">
+                                <div class="match-stat">
+                                    <div class="match-stat-value">${match.kills}</div>
+                                    <div class="match-stat-label">K</div>
+                                </div>
+                                <div class="match-stat">
+                                    <div class="match-stat-value">${match.deaths}</div>
+                                    <div class="match-stat-label">D</div>
+                                </div>
+                                <div class="match-stat">
+                                    <div class="match-stat-value">${match.assists}</div>
+                                    <div class="match-stat-label">A</div>
+                                </div>
+                                <div class="match-stat">
+                                    <div class="match-stat-value">${match.acs}</div>
+                                    <div class="match-stat-label">ACS</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // Agents
+            agentsContainer.innerHTML = "";
+            data.agents.forEach(agent => {
+                agentsContainer.innerHTML += `
+                    <div class="agent-card">
+                        <div class="agent-img">
+                            <img src="${agent.image}" alt="${agent.name}">
+                        </div>
+                        <div class="agent-name">${agent.name}</div>
+                        <div class="stat-item">
+                            <span class="stat-label">Win</span>
+                            <span class="stat-value">${agent.winRate}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Pick</span>
+                            <span class="stat-value">${agent.playRate}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // Mettre à jour la date de dernière mise à jour
+            const now = new Date();
+            lastUpdateEl.textContent = now.toLocaleString();
+        }
+        
+        // Gérer le processus de chargement
+        async function loadData() {
+            refreshBtn.classList.add("loading");
+            errorMessage.style.display = "none";
+            
+            try {
+                const data = await fetchPlayerData();
+                updateUI(data);
+            } catch (error) {
+                console.error("Erreur lors du chargement des données:", error);
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "Impossible de charger les données. Veuillez réessayer plus tard.";
+            } finally {
+                refreshBtn.classList.remove("loading");
+            }
+        }
+        
+        // Configurer les événements
+        refreshBtn.addEventListener("click", loadData);
+        
+        // Charger les données au démarrage
+        document.addEventListener("DOMContentLoaded", loadData);
+        
+        // Configurer un intervalle de mise à jour automatique
+        setInterval(loadData, REFRESH_INTERVAL);
+    </script>
+</body>
+</html>
