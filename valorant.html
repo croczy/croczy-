@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Stats Valo</title>
+    <title>Mes Stats Valorant - dé montmoi#fort</title>
     <style>
         :root {
             --primary: #fa4454;
@@ -318,7 +318,7 @@
         <header>
             <div class="player-card">
                 <div class="player-avatar">
-                    <img src="https://imgsvc.trackercdn.com/url/size(128),fit(cover)/https%3A%2F%2Ftitles.trackercdn.com%2Fvalorant-api%2Fplayercards%2Fc7e58b09-4b1f-ca2a-5ab6-daa6cab2fa6c%2Fdisplayicon.png/image.jpg" alt="Avatar du joueur" id="player-avatar">
+                    <img src="/api/placeholder/80/80" alt="Avatar du joueur" id="player-avatar">
                 </div>
                 <div class="player-info">
                     <div class="player-name">dé montmoi</div>
@@ -476,88 +476,7 @@
         const rankImgEl = document.getElementById("rank-img");
         const playerAvatarEl = document.getElementById("player-avatar");
         
-
-        
-        // Mettre à jour l'interface avec les nouvelles données
-        function updateUI(data) {
-            // Informations du joueur
-            document.querySelector(".player-name").textContent = data.player.name;
-            document.querySelector(".player-tag").textContent = "#" + data.player.tag;
-            playerAvatarEl.src = data.player.avatar;
-            
-            // Rang
-            currentRankEl.textContent = data.rank.current;
-            rankPointsEl.textContent = data.rank.points;
-            peakRankEl.textContent = data.rank.peak;
-            rankPositionEl.textContent = data.rank.position;
-            rankImgEl.src = data.rank.image;
-            
-            // Statistiques générales
-            winRateEl.textContent = data.stats.winRate;
-            kdRatioEl.textContent = data.stats.kdRatio;
-            hsPercentageEl.textContent = data.stats.hsPercentage;
-            acsEl.textContent = data.stats.acs;
-            matchesPlayedEl.textContent = data.stats.matchesPlayed;
-            winsEl.textContent = data.stats.wins;
-            lossesEl.textContent = data.stats.losses;
-            playtimeEl.textContent = data.stats.playtime;
-            
-            // Historique des parties
-            matchesContainer.innerHTML = "";
-            data.matches.forEach(match => {
-                matchesContainer.innerHTML += `
-                    <div class="match-item">
-                        <div class="match-result ${match.result}"></div>
-                        <div class="match-details">
-                            <div>
-                                <div class="match-map">${match.map}</div>
-                                <div class="match-date">${match.date}</div>
-                            </div>
-                            <div class="match-score">${match.score}</div>
-                            <div class="match-stats">
-                                <div class="match-stat">
-                                    <div class="match-stat-value">${match.kills}</div>
-                                    <div class="match-stat-label">K</div>
-                                </div>
-                                <div class="match-stat">
-                                    <div class="match-stat-value">${match.deaths}</div>
-                                    <div class="match-stat-label">D</div>
-                                </div>
-                                <div class="match-stat">
-                                    <div class="match-stat-value">${match.assists}</div>
-                                    <div class="match-stat-label">A</div>
-                                </div>
-                                <div class="match-stat">
-                                    <div class="match-stat-value">${match.acs}</div>
-                                    <div class="match-stat-label">ACS</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            // Agents
-            agentsContainer.innerHTML = "";
-            data.agents.forEach(agent => {
-                agentsContainer.innerHTML += `
-                    <div class="agent-card">
-                        <div class="agent-img">
-                            <img src="${agent.image}" alt="${agent.name}">
-                        </div>
-                        <div class="agent-name">${agent.name}</div>
-                        <div class="stat-item">
-                            <span class="stat-label">Win</span>
-                            <span class="stat-value">${agent.winRate}</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Pick</span>
-                            <span class="stat-value">${agent.playRate}</span>
-                        </div>
-                    </div>
-                `;
-            });
-// Données simulées pour la démonstration
+        // Données simulées pour la démonstration
         const mockData = {
             player: {
                 name: "dé montmoi",
@@ -655,6 +574,86 @@
                 }, 1500);
             });
         }
+        
+        // Mettre à jour l'interface avec les nouvelles données
+        function updateUI(data) {
+            // Informations du joueur
+            document.querySelector(".player-name").textContent = data.player.name;
+            document.querySelector(".player-tag").textContent = "#" + data.player.tag;
+            playerAvatarEl.src = data.player.avatar;
+            
+            // Rang
+            currentRankEl.textContent = data.rank.current;
+            rankPointsEl.textContent = data.rank.points;
+            peakRankEl.textContent = data.rank.peak;
+            rankPositionEl.textContent = data.rank.position;
+            rankImgEl.src = data.rank.image;
+            
+            // Statistiques générales
+            winRateEl.textContent = data.stats.winRate;
+            kdRatioEl.textContent = data.stats.kdRatio;
+            hsPercentageEl.textContent = data.stats.hsPercentage;
+            acsEl.textContent = data.stats.acs;
+            matchesPlayedEl.textContent = data.stats.matchesPlayed;
+            winsEl.textContent = data.stats.wins;
+            lossesEl.textContent = data.stats.losses;
+            playtimeEl.textContent = data.stats.playtime;
+            
+            // Historique des parties
+            matchesContainer.innerHTML = "";
+            data.matches.forEach(match => {
+                matchesContainer.innerHTML += `
+                    <div class="match-item">
+                        <div class="match-result ${match.result}"></div>
+                        <div class="match-details">
+                            <div>
+                                <div class="match-map">${match.map}</div>
+                                <div class="match-date">${match.date}</div>
+                            </div>
+                            <div class="match-score">${match.score}</div>
+                            <div class="match-stats">
+                                <div class="match-stat">
+                                    <div class="match-stat-value">${match.kills}</div>
+                                    <div class="match-stat-label">K</div>
+                                </div>
+                                <div class="match-stat">
+                                    <div class="match-stat-value">${match.deaths}</div>
+                                    <div class="match-stat-label">D</div>
+                                </div>
+                                <div class="match-stat">
+                                    <div class="match-stat-value">${match.assists}</div>
+                                    <div class="match-stat-label">A</div>
+                                </div>
+                                <div class="match-stat">
+                                    <div class="match-stat-value">${match.acs}</div>
+                                    <div class="match-stat-label">ACS</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // Agents
+            agentsContainer.innerHTML = "";
+            data.agents.forEach(agent => {
+                agentsContainer.innerHTML += `
+                    <div class="agent-card">
+                        <div class="agent-img">
+                            <img src="${agent.image}" alt="${agent.name}">
+                        </div>
+                        <div class="agent-name">${agent.name}</div>
+                        <div class="stat-item">
+                            <span class="stat-label">Win</span>
+                            <span class="stat-value">${agent.winRate}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Pick</span>
+                            <span class="stat-value">${agent.playRate}</span>
+                        </div>
+                    </div>
+                `;
+            });
             
             // Mettre à jour la date de dernière mise à jour
             const now = new Date();
