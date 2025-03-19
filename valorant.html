@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Stats Valorant - dé montmoi#fort</title>
     <style>
-    :root {
-            --primary: #7b2cbf;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --bg-gradient: linear-gradient(135deg, #240046, #3a0ca3);
+        :root {
+            --primary: #fa4454;
+            --secondary: #53212b;
+            --dark: #0f1923;
+            --light: #ece8e1;
         }
         
         * {
@@ -22,10 +20,8 @@
         }
         
         body {
-            background: var(--bg-gradient);
+            background-color: var(--dark);
             color: var(--light);
-            min-height: 100vh;
-            overflow-x: hidden;
         }
         
         .container {
@@ -33,67 +29,9 @@
             margin: 0 auto;
             padding: 20px;
         }
-        .navigation1 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-        }
         
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent);
-            text-shadow: 0 0 10px rgba(247, 37, 133, 0.5);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-        
-        nav a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: var(--accent);
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent);
-            text-shadow: 0 0 10px rgba(247, 37, 133, 0.5);
-        }
-
-
-         header {
+        header {
+            background-color: var(--secondary);
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -101,7 +39,6 @@
             align-items: center;
             justify-content: space-between;
         }
-        
         
         header img {
             height: 60px;
