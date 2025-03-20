@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moi - puant smr</title>
+    <link rel="stylesheet" href="moicss.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Set-up pour hit le immo</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="valorant">Valorant</a></li>
+                    <li><a href="moi.html" class="active">Moi</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1>Mon profil</h1>
+            <p>Découvrez qui je suis et mes compétences gaming</p>
+        </section>
+        
+        <div class="modes">
+            <button class="mode-btn active" data-mode="all">Tout</button>
+            <button class="mode-btn" data-mode="bio">Bio</button>
+            <button class="mode-btn" data-mode="skills">Compétences</button>
+            <button class="mode-btn" data-mode="achievements">Achievements</button>
+            <button class="mode-btn" data-mode="setup">Setup</button>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3 id="rank-stat">Immortal</h3>
+                <p>Rank actuel</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="hours-stat">1200</h3>
+                <p>Heures de jeu</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="winrate-stat">56%</h3>
+                <p>Win Rate</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="agent-stat">Jett</h3>
+                <p>Agent préféré</p>
+            </div>
+        </div>
+        
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="https://th.bing.com/th/id/OIP.2OIwAOdIx_a8Y6cp6RWJ9wHaHa?rs=1&pid=ImgDetMain" alt="Avatar du joueur">
+                </div>
+                <div class="profile-info">
+                    <h2 id="player-name">2kOnCroczyBiatch</h2>
+                    <p id="player-tagline">#FRAGG</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/gaming" class="social-link"><i class="fab fa-discord"></i> Discord</a>
+                        <a href="https://twitter.com/2kOnCroczy" class="social-link"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="https://twitch.tv/2kOnCroczy" class="social-link"><i class="fab fa-twitch"></i> Twitch</a>
+                        <a href="https://instagram.com/2kOnCroczy" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="https://tiktok.com/@2kOnCroczy" class="social-link"><i class="fab fa-tiktok"></i> TikTok</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-grid">
+                <!-- Bio Section -->
+                <div class="profile-item" data-category="bio">
+                    <h3>À propos de moi</h3>
+                    <div class="profile-content">
+                        <p id="bio-text">Je suis un joueur compétitif passionné par Valorant depuis la bêta. Mon style de jeu est agressif et je préfère les agents duellistes. Quand je ne joue pas, j'aime regarder des streams pour améliorer mes stratégies.</p>
+                        
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <h4>Âge</h4>
+                                <p id="player-age">22</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>Région</h4>
+                                <p id="player-region">Suisse</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>Depuis</h4>
+                                <p id="player-since">2020</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>Équipe</h4>
+                                <p id="player-team">Solo Q King</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Section -->
+                <div class="profile-item" data-category="skills">
+                    <h3>Mes compétences</h3>
+                    <div class="profile-content">
+                        <div class="skill-bars">
+                            <div class="skill">
+                                <span class="skill-name">Aim</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 85%;" id="aim-skill"></div>
+                                </div>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">Game Sense</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 78%;" id="sense-skill"></div>
+                                </div>
+                                <span class="skill-percent">78%</span>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">Comms</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 65%;" id="comms-skill"></div>
+                                </div>
+                                <span class="skill-percent">65%</span>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">Utility</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 72%;" id="utility-skill"></div>
+                                </div>
+                                <span class="skill-percent">72%</span>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">Clutch</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 90%;" id="clutch-skill"></div>
+                                </div>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="weapons-container">
+                            <h4>Armes préférées</h4>
+                            <div class="weapons-grid">
+                                <div class="weapon-item" id="weapon1">
+                                    <img src="https://static.wikia.nocookie.net/valorant/images/1/17/Vandal.png" alt="Vandal">
+                                    <span>Vandal</span>
+                                </div>
+                                <div class="weapon-item" id="weapon2">
+                                    <img src="https://static.wikia.nocookie.net/valorant/images/f/f1/Operator.png" alt="Operator">
+                                    <span>Operator</span>
+                                </div>
+                                <div class="weapon-item" id="weapon3">
+                                    <img src="https://static.wikia.nocookie.net/valorant/images/7/77/Sheriff.png" alt="Sheriff">
+                                    <span>Sheriff</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievements Section -->
+                <div class="profile-item" data-category="achievements">
+                    <h3>Mes achievements</h3>
+                    <div class="profile-content">
+                        <div class="achievements-list">
+                            <div class="achievement-item">
+                                <div class="achievement-icon">🏆</div>
+                                <div class="achievement-info">
+                                    <h4 id="achievement1-title">Top 500 Immortal - Acte 3</h4>
+                                    <p id="achievement1-desc">Atteint le top 500 des joueurs Immortal pendant l'Acte 3 Épisode 2</p>
+                                </div>
+                                <div class="achievement-date" id="achievement1-date">Août 2022</div>
+                            </div>
+                            
+                            <div class="achievement-item">
+                                <div class="achievement-icon">🔥</div>
+                                <div class="achievement-info">
+                                    <h4 id="achievement2-title">Ace Clutch</h4>
+                                    <p id="achievement2-desc">5 kills en 1v5 sur Ascent pour remporter la partie</p>
+                                </div>
+                                <div class="achievement-date" id="achievement2-date">Mars 2023</div>
+                            </div>
+                            
+                            <div class="achievement-item">
+                                <div class="achievement-icon">🎯</div>
+                                <div class="achievement-info">
+                                    <h4 id="achievement3-title">Win Streak</h4>
+                                    <p id="achievement3-desc">Série de 12 victoires consécutives en compétitif</p>
+                                </div>
+                                <div class="achievement-date" id="achievement3-date">Janvier 2024</div>
+                            </div>
+                            
+                            <div class="achievement-item">
+                                <div class="achievement-icon">🌟</div>
+                                <div class="achievement-info">
+                                    <h4 id="achievement4-title">Tournoi local</h4>
+                                    <p id="achievement4-desc">2ème place au tournoi local Cyber Games 2023</p>
+                                </div>
+                                <div class="achievement-date" id="achievement4-date">Novembre 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Setup Section (NEW) -->
+                <div class="profile-item" data-category="setup">
+                    <h3>Mon Setup</h3>
+                    <div class="profile-content">
+                        <div class="setup-gallery">
+                            <div class="setup-main-image">
+                                <img src="/api/placeholder/800/450" alt="Mon setup gaming" id="main-setup-image">
+                                <p class="setup-caption">Mon poste de combat pour dominer sur Valorant</p>
+                            </div>
+                            
+                            <div class="setup-specs">
+                                <h4>Spécifications</h4>
+                                <ul class="specs-list">
+                                    <li><span>PC:</span> AMD Ryzen 9 5900X, RTX 3080, 32GB RAM</li>
+                                    <li><span>Écran:</span> ASUS ROG Swift 360Hz PG259QN</li>
+                                    <li><span>Souris:</span> Logitech G Pro X Superlight</li>
+                                    <li><span>Clavier:</span> Razer Huntsman V2 TKL</li>
+                                    <li><span>Casque:</span> HyperX Cloud Alpha</li>
+                                    <li><span>Tapis:</span> SteelSeries QcK Prism Cloth XL</li>
+                                    <li><span>Chaise:</span> Secretlab TITAN Evo 2022</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="setup-thumbnails">
+                                <div class="setup-thumb">
+                                    <img src="/api/placeholder/200/150" alt="Setup périphériques">
+                                </div>
+                                <div class="setup-thumb">
+                                    <img src="/api/placeholder/200/150" alt="PC Gaming">
+                                </div>
+                                <div class="setup-thumb">
+                                    <img src="/api/placeholder/200/150" alt="Éclairage setup">
+                                </div>
+                            </div>
+                            
+                            <div class="setup-video">
+                                <h4>Tour de mon setup en vidéo</h4>
+                                <div class="video-container">
+                                    <img src="/api/placeholder/640/360" alt="Vidéo du setup">
+                                    <div class="play-button">▶</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Media Feed (NEW) -->
+        <div class="social-feed-container">
+            <h2>Mes derniers posts</h2>
+            <div class="social-feed">
+                <div class="social-post">
+                    <div class="post-header">
+                        <img src="https://th.bing.com/th/id/OIP.2OIwAOdIx_a8Y6cp6RWJ9wHaHa?rs=1&pid=ImgDetMain" alt="Avatar" class="post-avatar">
+                        <div class="post-info">
+                            <h4>2kOnCroczyBiatch</h4>
+                            <span class="post-platform"><i class="fab fa-twitter"></i> Twitter</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Ce clutch 1v3 avec Jett aujourd'hui était insane! Check le clip sur mon Twitch 🔥 #Valorant #ImmortalGrind</p>
+                    </div>
+                    <div class="post-stats">
+                        <span><i class="far fa-heart"></i> 245</span>
+                        <span><i class="far fa-comment"></i> 32</span>
+                        <span><i class="far fa-retweet"></i> 78</span>
+                    </div>
+                </div>
+                
+                <div class="social-post">
+                    <div class="post-header">
+                        <img src="https://th.bing.com/th/id/OIP.2OIwAOdIx_a8Y6cp6RWJ9wHaHa?rs=1&pid=ImgDetMain" alt="Avatar" class="post-avatar">
+                        <div class="post-info">
+                            <h4>2kOnCroczyBiatch</h4>
+                            <span class="post-platform"><i class="fab fa-instagram"></i> Instagram</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="insta-image">
+                            <img src="/api/placeholder/400/400" alt="Photo setup">
+                        </div>
+                        <p>Nouveau setup terminé! Prêt pour la grind 💪 #GamerLife #SetupTour</p>
+                    </div>
+                    <div class="post-stats">
+                        <span><i class="far fa-heart"></i> 538</span>
+                        <span><i class="far fa-comment"></i> 47</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-buttons">
+                <a href="https://twitter.com/2kOnCroczy" class="social-button twitter"><i class="fab fa-twitter"></i> Suivre sur Twitter</a>
+                <a href="https://instagram.com/2kOnCroczy" class="social-button instagram"><i class="fab fa-instagram"></i> Suivre sur Instagram</a>
+                <a href="https://twitch.tv/2kOnCroczy" class="social-button twitch"><i class="fab fa-twitch"></i> Suivre sur Twitch</a>
+                <a href="https://tiktok.com/@2kOnCroczy" class="social-button tiktok"><i class="fab fa-tiktok"></i> Suivre sur TikTok</a>
+                <a href="https://youtube.com/2kOnCroczy" class="social-button youtube"><i class="fab fa-youtube"></i> Suivre sur YouTube</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="theme-toggle">
+        <span>☀️</span>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">2kOnCroczyBiatch</div>
+            <div class="footer-social">
+                <a href="https://discord.gg/gaming" class="footer-icon"><i class="fab fa-discord"></i></a>
+                <a href="https://twitter.com/2kOnCroczy" class="footer-icon"><i class="fab fa-twitter"></i></a>
+                <a href="https://twitch.tv/2kOnCroczy" class="footer-icon"><i class="fab fa-twitch"></i></a>
+                <a href="https://instagram.com/2kOnCroczy" class="footer-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@2kOnCroczy" class="footer-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/2kOnCroczy" class="footer-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>©2kOnCroczyBiatch | Tous droits réservés</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate items on load
+            const profileItems = document.querySelectorAll('.profile-item');
+            profileItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // Mode buttons functionality
+            const modeButtons = document.querySelectorAll('.mode-btn');
+            modeButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    modeButtons.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const mode = this.getAttribute('data-mode');
+                    filterItems(mode);
+                });
+            });
+            
+            // Filter items based on mode
+            function filterItems(mode) {
+                const items = document.querySelectorAll('.profile-item');
+                items.forEach(item => {
+                    if (mode === 'all' || item.getAttribute('data-category') === mode) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Theme toggle
+            const themeToggle = document.querySelector('.theme-toggle');
+            let isDarkMode = true;
+            
+            themeToggle.addEventListener('click', function() {
+                if (isDarkMode) {
+                    document.body.classList.add('light-mode');
+                    this.innerHTML = '<span>🌙</span>';
+                } else {
+                    document.body.classList.remove('light-mode');
+                    this.innerHTML = '<span>☀️</span>';
+                }
+                isDarkMode = !isDarkMode;
+            });
+            
+            // Setup gallery thumbnail click handler
+            const setupThumbs = document.querySelectorAll('.setup-thumb img');
+            const mainSetupImage = document.getElementById('main-setup-image');
+            
+            setupThumbs.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    mainSetupImage.src = this.src;
+                    
+                    // Add active class to clicked thumbnail
+                    setupThumbs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Video play button click handler
+            const playButton = document.querySelector('.play-button');
+            if (playButton) {
+                playButton.addEventListener('click', function() {
+                    alert('La vidéo serait lancée ici dans une implémentation réelle');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
