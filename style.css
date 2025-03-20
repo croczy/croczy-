@@ -309,11 +309,11 @@
             --bg-gradient: linear-gradient(135deg, #000, #1a1a2e);
         }
         
-        .light-mode {
-            --bg-gradient: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            --light: #212529;
-            --dark: #f8f9fa;
-        }
+            .light-mode {
+                --bg-gradient: linear-gradient(135deg, #ff7e5f, #feb47b); /* Dégradé dynamique et chaleureux */
+                --light: #f7f7f7; /* Un gris clair presque blanc pour la lumière */
+                --dark: #333333; /* Un gris foncé pour les textes et éléments contrastés */
+            }
         
         .setup-modal {
             position: fixed;
